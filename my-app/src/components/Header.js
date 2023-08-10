@@ -1,21 +1,22 @@
-import React from "react";
-import restauranfood from "../images/restauranfood.jpg";
+import Nav from "./nav";
+import Logo from "../image/Logo.svg";
 
-const Header = () => {
-    return(
-        <header>
-            <section>
-            <div>
-            <h2>Little Lemon</h2>
-            <h3>Chicago</h3>
-            <p>We are a family owned Mediterraneran restaurant, focused on traditional recipes servred with a modern twist.</p>
-            </div>
-            <div>
-          <img src={restauranfood} alt="Delicious food"/>
-            </div>
-            </section>
-        </header>
-    )
+import React from "react";
+
+function Header() {
+  return (
+    <>
+      <div className="header">
+        <div className="logo">
+          <img src={Logo} alt="Logo" />
+        </div>
+
+        <div className="navigation">
+          <Nav />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Header;

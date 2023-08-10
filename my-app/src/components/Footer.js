@@ -1,43 +1,92 @@
-import React from 'react';
-import lemondessert from '../images/lemon dessert.jpg';
+import Logo from "..images/Logo.svg";
+import { Link } from "react-router-dom";
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer>
-      <section>
-        <div>
-          <img src={lemondessert} alt="Welcome" />
+    <>
+      <div className="footer">
+        <div className="one">
+          <img src={Logo} alt="Secondary Logo" />
         </div>
-        <div>
-          <h3>Document Navigation</h3>
+        <div className="two">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Menu</li>
-            <li>Reservations</li>
-            <li>Order Online</li>
-            <li>Login</li>
+            <h5>Navigation</h5>
+            <li>
+              <Link to="/" className="a">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="a">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/menu" className="a">
+                Menu
+              </Link>
+            </li>
+            <li>
+              <Link to="/reservations" className="a">
+                Reservations
+              </Link>
+            </li>
+            <li>
+              <Link to="/order" className="a">
+                Order Online
+              </Link>
+            </li>
+            <li>
+              <Link to="/login" className="a">
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
-        <div>
-          <h3>Contact</h3>
+        <div className="three">
           <ul>
-            <li>Address</li>
-            <li>Phone Number</li>
-            <li>Email</li>
+            <h5>Contact</h5>
+            <li>
+              <a id="nav" href="#">
+                Phone Number
+              </a>
+            </li>
+            <li>
+              <a id="nav" href="#">
+                Email
+              </a>
+            </li>
+            <li>
+              <a id="nav" href="#">
+                Address
+              </a>
+            </li>
           </ul>
         </div>
-        <div>
-          <h3>Social Media Links</h3>
+        <div className="four">
           <ul>
-            <li>Address</li>
-            <li>Phone Number</li>
-            <li>Email</li>
+            <h5>Social Media</h5>
+
+            <li>
+              <a id="nav" href="#">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a id="nav" href="#">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a id="nav" href="#">
+                Pinterest
+              </a>
+            </li>
           </ul>
         </div>
-      </section>
-    </footer>
+      </div>
+    </>
   );
-};
+}
 
 export default Footer;
