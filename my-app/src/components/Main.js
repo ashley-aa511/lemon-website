@@ -1,41 +1,63 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import BookingForm from "./bookingForm.js";
-import ConfirmedBooking from "./confirmedBooking.js";
+import React, { useReducer } from "react";
+import {  Route, Routes, useNavigate } from "react-router-dom";
+import Booking from "./booking";
+import ConfirmedBooking from "./confirmedBooking";
 import Header from "./Header";
 
 const Main = () => {
-  // Move the availableTimes state to the Main component
-  const [availableTimes, setAvailableTimes] = useState([]);
+   // const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"])
 
-  // Define the fetchAPI function
+  //Chrome was blocking running the script on the index page so I added it here. "https://chromestatus.com/feature/5629709824032768"
+  const seededRandom = function (seed) {
+    var m = 2 ** 35 - 31;
+    var a = 185852;
+    var s = seed % m;
+    return function () {
+      return (s = (s * a) % m) / m;
+    };
+  };
+
   const fetchAPI = function (date) {
-    // ... (Your fetchAPI logic)
+    let result = [];
+    let random = seededRandom(date.getDate());
+
+    for (let i = 17; i <= 23; i++) {
+      if (random() < 0.5) {
+        result.push(i + ":00");
+      }
+      if (random() < 0.5) {
+        result.push(i + ":30");
+      }
+    }
+    return result;
+  };
+  const submitAPI = function (formData) {
+    return true;
   };
 
-  // Define the submitForm function
-  const submitForm = function (formData) {
-    // ... (Your submitForm logic)
-  };
+  const initialState = { availableTimes: fetchAPI(new Date()) };
+  const [state, dispatch] = useReducer(updateTimes, initialState);
 
-  // Other logic remains the same...
-
-  // Update the updateTimes function to use setAvailableTimes
-  function updateTimes(date) {
-    setAvailableTimes(fetchAPI(new Date(date)));
+  function updateTimes(state, date) {
+    return { availableTimes: fetchAPI(new Date(date)) };
+  }
+  const navigate = useNavigate();
+  function submitForm(formData) {
+    if (submitAPI(formData)) {
+      navigate("/confirmed");
+    }
   }
 
   return (
     <main>
       <Routes>
         <Route path="/" element={<Header />} />
-        {/* Pass the availableTimes state and updateTimes function as props */}
         <Route
           path="/booking"
           element={
-            <BookingForm
-              availableTimes={availableTimes}
-              updateTimes={updateTimes}
+            <Booking
+              availableTimes={state.availableTimes}
+              dispatch={dispatch}
               submitForm={submitForm}
             />
           }
