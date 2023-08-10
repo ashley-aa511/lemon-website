@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Specials from "./Specials";
 import About from "./About";
 import Testimonials from "./Testimonials";
-import Footer from "./Footer";
+import Footer from "./footer";
 
 const Home = ({ bookingData }) => {
   console.log(bookingData);

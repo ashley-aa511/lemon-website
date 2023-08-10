@@ -1,6 +1,6 @@
 import Header from "./Header";
-import Footer from "./Footer";
-import BookingForm from "./BookingForm";
+import Footer from "./footer";
+import BookingForm from "./bookingForm";
 
 const BookingPage = ({
   bookingData,

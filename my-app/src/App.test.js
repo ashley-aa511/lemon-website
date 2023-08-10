@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import BookingForm from "./components/BookingForm";
+import BookingForm from "./components/bookingForm";
 import { BrowserRouter as Router } from "react-router-dom";
 import { fireEvent } from "@testing-library/react";
 import Home from "./components/Home";
