@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 import lemondessert from '../images/lemon dessert.jpg';
 
 const Footer = () => {
@@ -7,7 +6,7 @@ const Footer = () => {
     <footer>
       <section>
         <div>
-          <img src={lemondessert} />
+          <img src={lemondessert} alt="Welcome" />
         </div>
         <div>
           <h3>Document Navigation</h3>
